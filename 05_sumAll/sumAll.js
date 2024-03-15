@@ -1,6 +1,21 @@
-const sumAll = function() {
-
+const sumAll = function(start, end) {
+    if (typeof start !== 'number'|| typeof end !=='number'){
+        return "ERROR";
+    }
+    if (start < 0 || end < 0){
+        return "ERROR";
+    }
+    let arr=[];
+    let sum=0;
+    for (let i=start;i<=end;i++){
+        arr.push(i);
+    }
+    for (let i = 0; i < arr.length; i++) {
+        sum += arr[i];
+    }
+        return sum;
 };
 
+sumAll(3,5);
 // Do not edit below this line
 module.exports = sumAll;
