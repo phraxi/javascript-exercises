@@ -5,11 +5,16 @@ const sumAll = function(start, end) {
     if (start < 0 || end < 0){
         return "ERROR";
     }
+    if (start > end){
+        let tmp = start;
+        start = end;
+        end = tmp;
+    }
     let arr=[];
     let sum=0;
     for (let i=start;i<=end;i++){
         arr.push(i);
-    }
+    }s
     for (let i = 0; i < arr.length; i++) {
         sum += arr[i];
     }
