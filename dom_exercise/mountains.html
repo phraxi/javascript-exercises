@@ -1,0 +1,53 @@
+<head>
+
+</head>
+<body>
+    <h1>Mountains</h1>
+    <div id="mountains"></div>
+
+    <script>
+        const MOUNTAINS = [
+          {name: "Kilimanjaro", height: 5895, place: "Tanzania"},
+          {name: "Everest", height: 8848, place: "Nepal"},
+          {name: "Mount Fuji", height: 3776, place: "Japan"},
+          {name: "Vaalserberg", height: 323, place: "Netherlands"},
+          {name: "Denali", height: 6168, place: "United States"},
+          {name: "Popocatepetl", height: 5465, place: "Mexico"},
+          {name: "Mont Blanc", height: 4808, place: "Italy/France"}
+        ];
+      
+        // Your code here
+        const parrent = document.querySelector("#mountains");
+        const table = document.createElement("table");
+        const tr = document.createElement("tr");
+        const name = document.createElement("th");
+        name.textContent= "name";
+        const height = document.createElement("th");
+        height.textContent = "height";
+        const place = document.createElement("th");
+        place.textContent= "place";
+        
+        parrent.appendChild(table);
+        parrent.appendChild(tr);
+        parrent.appendChild(name);
+        parrent.appendChild(height);
+        parrent.appendChild(place);
+
+        MOUNTAINS.forEach(mountain =>{
+            const tr = document.createElement("tr");
+            const name = document.createElement("td");
+            name.textContent = mountain.name;
+            const height = document.createElement("td");
+            height.textContent = mountain.height;
+            height.style.textAlign = "right";
+            const place =document.createElement("td");
+            place.textContent = mountain.place;
+
+            parrent.appendChild(tr);
+            parrent.appendChild(name);
+            parrent.appendChild(place);
+            parrent.appendChild(height);
+        });
+    
+      </script>    
+</body>
