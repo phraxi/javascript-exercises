@@ -1,0 +1,28 @@
+<style>body { min-height: 200px }</style>
+<img src="img/cat.jpg" id="cat" style="position: absolute" height="200px" width="200px">
+<img src="img/cat.jpg" id="circle-cat" style="position: absolute" height="200px" width="200px">
+<img src="img/hat.jpg" id="hat" style="position: absolute" height="50px" width="100px" >
+
+<script>
+  let cat = document.querySelector("#cat");
+  let circleCat = document.querySelector("#circle-cat");
+  let hat = document.querySelector("#hat");
+
+  let angle = 0;
+  let lastTime = null;
+  function animate(time) {
+    if (lastTime != null) angle += (time - lastTime) * 0.001;
+    lastTime = time;
+    cat.style.top = (Math.sin(angle) * 40 + 40) + "px";
+    cat.style.left = (Math.cos(angle) * 200 + 210) + "px";
+
+    hat.style.top = (Math.sin(angle) * 40 + 90) + "px";
+    hat.style.left = (Math.cos(angle) * 200 + 240) + "px";
+    // Your extensions here.
+
+    circleCat.style.left = 10 * angle;
+    circleCat.style.top =  10 * angle;
+    requestAnimationFrame(animate);
+  }
+  requestAnimationFrame(animate);
+</script>
