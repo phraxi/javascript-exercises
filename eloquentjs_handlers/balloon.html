@@ -6,9 +6,6 @@
     <title>Big Balloons!</title>
     <style>
         /* CSS styles can be placed here */
-        * {
-            border: 1px solid red;
-        }
             
         body {
             font-family: Arial, sans-serif;
@@ -38,7 +35,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100%;
+            height: 100vh;
         }
 
         footer {
@@ -65,21 +62,28 @@
     </div>
 </body>
 <script>
-    function inflateSize(pixels = 10){
+    function inflateSize(perc = 0.1){
         const node = document.getElementById("balloon");
         let currentSize = parseFloat(window.getComputedStyle(node).fontSize);
-        let newSize = currentSize + pixels;
+        let newSize = currentSize * (1 + perc);
+        node.style.fontSize = newSize + "px";
+        if(parseFloat(window.getComputedStyle(node).fontSize) >= 400){
+                node.textContent= "💥";
+                document.removeEventListener("keydown", handleKeyDown);
+            }
+    }
+
+    function deflateSize(perc = 0.1){
+        const node = document.getElementById("balloon");
+        let currentSize = parseFloat(window.getComputedStyle(node).fontSize);
+        let newSize = currentSize * (1- perc);
         node.style.fontSize = newSize + "px";
     }
 
-    function deflateSize(pixels = 10){
-        const node = document.getElementById("balloon");
-        let currentSize = parseFloat(window.getComputedStyle(node).fontSize);
-        let newSize = currentSize - pixels;
-        node.style.fontSize = newSize + "px";
-    }
+    document.addEventListener("keydown", handleKeyDown) 
+    //document.addEventListener("keydown", handleKeyDown);
 
-    document.addEventListener("keydown", function(event) {
+    function handleKeyDown(event){
         if (event.keyCode === 38){
             event.preventDefault();
             inflateSize();
@@ -88,7 +92,6 @@
             event.preventDefault();
             deflateSize();
         }
-    });
-    //document.addEventListener("keydown", handleKeyDown);
+    }
 </script>
 </html>
