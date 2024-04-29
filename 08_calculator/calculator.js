@@ -9,20 +9,11 @@ const subtract = function(x,y) {
 
 const sum = function(nums) {
   // with array.reduce():
-  //return nums.reduce((total, current) => total + current, 0);
-  let  sum=0;
-  for (let i =0;i<nums.length;i++){
-    sum = nums[i] + sum;
-  }
-  return sum;
+  return nums.reduce((total, current) => total + current, 0);
 };
 
 const multiply = function(nums) {
-  let count=1;
-  for (let i =0; i<nums.length; i++){
-    count = nums[i] * count;
-  }
-  return count;
+  return nums.reduce((total, current) => total * current, 1);
 };
 
 // recursive implementations for fancyness
